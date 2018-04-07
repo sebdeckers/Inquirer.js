@@ -347,6 +347,14 @@ describe('inquirer.prompt', function() {
     promise.ui.rl.emit('line');
   });
 
+  it('should resolve if no prompts are given', function(done) {
+    var promise = this.prompt();
+    promise.then(answers => {
+      expect(answers).to.deep.equal({});
+      done();
+    });
+  });
+
   it('should expose the Reactive interface', function(done) {
     var prompts = [
       {
